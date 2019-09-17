@@ -1,0 +1,82 @@
+﻿@model Dieta.Models.DD_Desembolso
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DD_Desembolso</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CODIGO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CODIGO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CODIGO_BENEFICIARIO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CODIGO_BENEFICIARIO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MONTO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MONTO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CONCEPTO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CONCEPTO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AREA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AREA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.METODO_PAGO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.METODO_PAGO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DD_Beneficiarios.CODIGO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DD_Beneficiarios.CODIGO)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Dieta.Models.DD_GrupoOcupacional>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NOMBRE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DESAYUNO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ALMUERZO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CENA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HOSPEDAJE)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NOMBRE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DESAYUNO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ALMUERZO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CENA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HOSPEDAJE)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProcesosDAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="PERFILE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PERFIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="USUARIOS" Relationship="Self.FK_USUARIOS" FromRole="PERFILES" ToRole="USUARIOS" />
+  </EntityType>
+  <EntityType Name="USUARIO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USUARIO1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PASSWORD" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PERFIL" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="PERFILE" Relationship="Self.FK_USUARIOS" FromRole="USUARIOS" ToRole="PERFILES" />
+  </EntityType>
+  <Association Name="FK_USUARIOS">
+    <End Role="PERFILES" Type="Self.PERFILE" Multiplicity="1" />
+    <End Role="USUARIOS" Type="Self.USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERFILES">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="USUARIOS">
+        <PropertyRef Name="PERFIL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ProcesosDAEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="PERFILES" EntityType="Self.PERFILE" />
+    <EntitySet Name="USUARIOS" EntityType="Self.USUARIO" />
+    <AssociationSet Name="FK_USUARIOS" Association="Self.FK_USUARIOS">
+      <End Role="PERFILES" EntitySet="PERFILES" />
+      <End Role="USUARIOS" EntitySet="USUARIOS" />
+    </AssociationSet>
+    <EntitySet Name="COSTOes" EntityType="ProcesosDAModel.COSTO" />
+    <EntitySet Name="DD_Solicitudes" EntityType="ProcesosDAModel.DD_Solicitudes" />
+    <EntitySet Name="DISTANCIAs" EntityType="ProcesosDAModel.DISTANCIA" />
+    <AssociationSet Name="FK_COSTO" Association="ProcesosDAModel.FK_COSTO">
+      <End Role="DD_Solicitudes" EntitySet="DD_Solicitudes" />
+      <End Role="COSTO" EntitySet="COSTOes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DISTANCIA" Association="ProcesosDAModel.FK_DISTANCIA">
+      <End Role="DD_Solicitudes" EntitySet="DD_Solicitudes" />
+      <End Role="DISTANCIA" EntitySet="DISTANCIAs" />
+    </AssociationSet>
+    <EntitySet Name="DD_Beneficiarios" EntityType="ProcesosDAModel.DD_Beneficiarios" />
+    <EntitySet Name="DD_Cantidades" EntityType="ProcesosDAModel.DD_Cantidades" />
+    <EntitySet Name="DD_Desembolso" EntityType="ProcesosDAModel.DD_Desembolso" />
+    <EntitySet Name="DD_GrupoOcupacional" EntityType="ProcesosDAModel.DD_GrupoOcupacional" />
+    <AssociationSet Name="FK_ASIGNATURAS" Association="ProcesosDAModel.FK_ASIGNATURAS">
+      <End Role="DD_GrupoOcupacional" EntitySet="DD_GrupoOcupacional" />
+      <End Role="DD_Beneficiarios" EntitySet="DD_Beneficiarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_REEMBOLSO" Association="ProcesosDAModel.FK_REEMBOLSO">
+      <End Role="DD_Beneficiarios" EntitySet="DD_Beneficiarios" />
+      <End Role="DD_Desembolso" EntitySet="DD_Desembolso" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SOLICITUDES2" Association="ProcesosDAModel.FK_SOLICITUDES2">
+      <End Role="DD_Solicitudes" EntitySet="DD_Solicitudes" />
+      <End Role="DD_Beneficiarios" EntitySet="DD_Beneficiarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SOLICITUDES" Association="ProcesosDAModel.FK_SOLICITUDES">
+      <End Role="DD_Solicitudes" EntitySet="DD_Solicitudes" />
+      <End Role="DD_Cantidades" EntitySet="DD_Cantidades" />
+    </AssociationSet>
+    <EntitySet Name="DD_Bitacora" EntityType="ProcesosDAModel.DD_Bitacora" />
+  </EntityContainer>
+  <EntityType Name="COSTO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SOLICITUD" Type="Int32" Nullable="false" />
+    <Property Name="COSTO1" Type="Decimal" Nullable="false" Precision="13" Scale="2" />
+    <NavigationProperty Name="DD_Solicitudes" Relationship="ProcesosDAModel.FK_COSTO" FromRole="COSTO" ToRole="DD_Solicitudes" />
+  </EntityType>
+  <EntityType Name="DD_Solicitudes">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="FECHA" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CARGO" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DEPENDENCIA" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MOTIVO" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="F_ENTRADA" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="F_SALIDA" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TIPO" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="Combustible" Type="Decimal" Precision="13" Scale="2" />
+    <NavigationProperty Name="COSTOes" Relationship="ProcesosDAModel.FK_COSTO" FromRole="DD_Solicitudes" ToRole="COSTO" />
+    <NavigationProperty Name="DISTANCIAs" Relationship="ProcesosDAModel.FK_DISTANCIA" FromRole="DD_Solicitudes" ToRole="DISTANCIA" />
+    <NavigationProperty Name="DD_Beneficiarios" Relationship="ProcesosDAModel.FK_SOLICITUDES2" FromRole="DD_Solicitudes" ToRole="DD_Beneficiarios" />
+    <NavigationProperty Name="DD_Cantidades" Relationship="ProcesosDAModel.FK_SOLICITUDES" FromRole="DD_Solicitudes" ToRole="DD_Cantidades" />
+  </EntityType>
+  <EntityType Name="DISTANCIA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SOLICITUD" Type="Int32" Nullable="false" />
+    <Property Name="DESDE" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="HASTA" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="KM" Type="Decimal" Nullable="false" Precision="13" Scale="2" />
+    <NavigationProperty Name="DD_Solicitudes" Relationship="ProcesosDAModel.FK_DISTANCIA" FromRole="DISTANCIA" ToRole="DD_Solicitudes" />
+  </EntityType>
+  <Association Name="FK_COSTO">
+    <End Type="ProcesosDAModel.DD_Solicitudes" Role="DD_Solicitudes" Multiplicity="1" />
+    <End Type="ProcesosDAModel.COSTO" Role="COSTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DD_Solicitudes">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="COSTO">
+        <PropertyRef Name="SOLICITUD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DISTANCIA">
+    <End Type="ProcesosDAModel.DD_Solicitudes" Role="DD_Solicitudes" Multiplicity="1" />
+    <End Type="ProcesosDAModel.DISTANCIA" Role="DISTANCIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DD_Solicitudes">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DISTANCIA">
+        <PropertyRef Name="SOLICITUD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="DD_Beneficiarios">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CODIGO" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ASIGNATURASID" Type="Int32" Nullable="false" />
+    <Property Name="SOLICITUDESID" Type="Int32" Nullable="false" />
+    <Property Name="DESAYUNO" Type="Int32" />
+    <Property Name="ALMUERZO" Type="Int32" />
+    <Property Name="CENA" Type="Int32" />
+    <Property Name="HOSPEDAJE" Type="Int32" />
+    <Property Name="TOTAL" Type="Decimal" Precision="13" Scale="2" />
+    <NavigationProperty Name="DD_GrupoOcupacional" Relationship="ProcesosDAModel.FK_ASIGNATURAS" FromRole="DD_Beneficiarios" ToRole="DD_GrupoOcupacional" />
+    <NavigationProperty Name="DD_Desembolso" Relationship="ProcesosDAModel.FK_REEMBOLSO" FromRole="DD_Beneficiarios" ToRole="DD_Desembolso" />
+    <NavigationProperty Name="DD_Solicitudes" Relationship="ProcesosDAModel.FK_SOLICITUDES2" FromRole="DD_Beneficiarios" ToRole="DD_Solicitudes" />
+  </EntityType>
+  <EntityType Name="DD_Cantidades">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SOLICITUDESID" Type="Int32" Nullable="false" />
+    <Property Name="DESAYUNO" Type="Int32" />
+    <Property Name="ALMUERZO" Type="Int32" />
+    <Property Name="CENA" Type="Int32" />
+    <Property Name="HOSPEDAJE" Type="Int32" />
+    <NavigationProperty Name="DD_Solicitudes" Relationship="ProcesosDAModel.FK_SOLICITUDES" FromRole="DD_Cantidades" ToRole="DD_Solicitudes" />
+  </EntityType>
+  <EntityType Name="DD_Desembolso">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CODIGO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="BENEFICIARIOID" Type="Int32" Nullable="false" />
+    <Property Name="CODIGO_BENEFICIARIO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="MONTO" Type="Int32" />
+    <Property Name="FECHA" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CONCEPTO" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="AREA" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="METODO_PAGO" Type="String" Nullable="false" MaxLength="14" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="DD_Beneficiarios" Relationship="ProcesosDAModel.FK_REEMBOLSO" FromRole="DD_Desembolso" ToRole="DD_Beneficiarios" />
+  </EntityType>
+  <EntityType Name="DD_GrupoOcupacional">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DESAYUNO" Type="Int32" Nullable="false" />
+    <Property Name="ALMUERZO" Type="Int32" Nullable="false" />
+    <Property Name="CENA" Type="Int32" Nullable="false" />
+    <Property Name="HOSPEDAJE" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="DD_Beneficiarios" Relationship="ProcesosDAModel.FK_ASIGNATURAS" FromRole="DD_GrupoOcupacional" ToRole="DD_Beneficiarios" />
+  </EntityType>
+  <Association Name="FK_ASIGNATURAS">
+    <End Type="ProcesosDAModel.DD_GrupoOcupacional" Role="DD_GrupoOcupacional" Multiplicity="1" />
+    <End Type="ProcesosDAModel.DD_Beneficiarios" Role="DD_Beneficiarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DD_GrupoOcupacional">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DD_Beneficiarios">
+        <PropertyRef Name="ASIGNATURASID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_REEMBOLSO">
+    <End Type="ProcesosDAModel.DD_Beneficiarios" Role="DD_Beneficiarios" Multiplicity="1" />
+    <End Type="ProcesosDAModel.DD_Desembolso" Role="DD_Desembolso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DD_Beneficiarios">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DD_Desembolso">
+        <PropertyRef Name="BENEFICIARIOID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SOLICITUDES2">
+    <End Type="ProcesosDAModel.DD_Solicitudes" Role="DD_Solicitudes" Multiplicity="1" />
+    <End Type="ProcesosDAModel.DD_Beneficiarios" Role="DD_Beneficiarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DD_Solicitudes">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DD_Beneficiarios">
+        <PropertyRef Name="SOLICITUDESID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SOLICITUDES">
+    <End Type="ProcesosDAModel.DD_Solicitudes" Role="DD_Solicitudes" Multiplicity="1" />
+    <End Type="ProcesosDAModel.DD_Cantidades" Role="DD_Cantidades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DD_Solicitudes">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DD_Cantidades">
+        <PropertyRef Name="SOLICITUDESID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="DD_Bitacora">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USERNAME" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="EVENTO" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="DATE" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+</Schema>

@@ -1,0 +1,135 @@
+﻿@model IEnumerable<Dieta.Models.USUARIO>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css">
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
+    <a class="navbar-brand" href="#">Banreservas</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/Beneficiarios/Index">Beneficiarios <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Solicitudes/Index">Solicitudes</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Mantenimiento
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/Usuarios/Index">Usuarios</a>
+                    <a class="dropdown-item" href="/Perfiles/Index">Perfiles</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Bitacora</a>
+                </div>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            @if (User.Identity.IsAuthenticated)
+            {
+                <a class="btn text-dark mr-2" href="#" disabled><i class="fas fa-user"></i> User Account: <strong>@User.Identity.Name</strong></a>
+                <a class="btn text-danger mr-2" href="@Url.Action("LogOut", "Accounts")"><i class="fas fa-sign-out-alt"></i> LogOut</a>
+            }
+        </form>
+    </div>
+</nav>
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/materia/bootstrap.min.css">
+    <style>
+
+
+        form a:hover {
+            background: #ecf0f1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Index</h2>
+
+                <form style="display: flex" class="mb-3">
+                    <a class="btn   " href="@Url.Action("Create", "Usuarios")">CREAR SOLICITUD</a>
+                    <div class="dropdown mx-1">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Report
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="@Url.Action("Report", "Accounts")">Simple</a>
+                            <a class="dropdown-item" href="@Url.Action("Report2", "Accounts")">Completo</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Ordenar Por
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="@Url.Action("OrderByName", "Usuarios")">Nombre</a>
+                            <a class="dropdown-item" href="@Url.Action("OrderByPassword", "Usuarios")">Password</a>
+                            <a class="dropdown-item" href="@Url.Action("OrderByPerfil", "Usuarios")">Perfil</a>
+                        </div>
+                    </div>
+
+                </form>
+                <table class="table table-bordered table-hover">
+                    <thead class="bg-primary text-white">
+                        <tr>
+                            <th>
+                                Usuario
+                            </th>
+                            <th>
+                               Password
+                            </th>
+                            <th>
+                                Perfil
+                            </th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.USUARIO1)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PASSWORD)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PERFILE.PERFIL)
+                            </td>
+                            <td>
+                                <a class="btn btn-sm btn-outline-warning p-2" href="@Url.Action("Edit", "Usuarios", new { id = item.ID })"><i class="fas fa-edit"></i> Edit</a>
+                                <a class="btn btn-sm btn-outline-info p-2" href="@Url.Action("Details", "Usuarios", new { id = item.ID })"><i class="fas fa-info"></i> Details</a>
+                                <a class="btn btn-sm btn-outline-danger p-2" href="@Url.Action("Delete", "Usuarios", new { id = item.ID })"><i class="fas fa-trash-alt"></i> Delete</a>
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
+

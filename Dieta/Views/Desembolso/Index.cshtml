@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Dieta.Models.DD_Desembolso>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CODIGO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CODIGO_BENEFICIARIO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MONTO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FECHA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CONCEPTO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AREA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.METODO_PAGO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DD_Beneficiarios.CODIGO)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CODIGO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CODIGO_BENEFICIARIO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MONTO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FECHA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CONCEPTO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AREA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.METODO_PAGO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DD_Beneficiarios.CODIGO)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

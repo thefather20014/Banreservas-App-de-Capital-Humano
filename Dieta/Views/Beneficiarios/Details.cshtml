@@ -1,0 +1,90 @@
+﻿@model Dieta.Models.DD_Beneficiarios
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DD_Beneficiarios</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CODIGO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CODIGO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESAYUNO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESAYUNO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ALMUERZO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ALMUERZO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CENA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CENA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HOSPEDAJE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HOSPEDAJE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TOTAL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TOTAL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DD_GrupoOcupacional.NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DD_GrupoOcupacional.NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DD_Solicitudes.NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DD_Solicitudes.NOMBRE)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

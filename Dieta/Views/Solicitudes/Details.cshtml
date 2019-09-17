@@ -1,0 +1,90 @@
+﻿@model Dieta.Models.DD_Solicitudes
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DD_Solicitudes</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CARGO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CARGO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DEPENDENCIA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DEPENDENCIA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MOTIVO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MOTIVO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_ENTRADA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_ENTRADA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_SALIDA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_SALIDA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TIPO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TIPO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Combustible)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Combustible)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

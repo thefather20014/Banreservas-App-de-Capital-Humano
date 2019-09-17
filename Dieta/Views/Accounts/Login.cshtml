@@ -1,0 +1,102 @@
+﻿@model Dieta.Models.USUARIO
+
+@{
+    ViewBag.Title = "Login";
+    Layout = null;
+}
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/materia/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css">
+
+<style>
+
+
+    form a:hover {
+        background: #ecf0f1;
+    }
+</style>
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
+    <a class="navbar-brand" href="#">Banreservas</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item ">
+                <a class="nav-link disabled" href="/Beneficiarios/Index">Beneficiarios <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link disabled" href="/Solicitudes/Index">Solicitudes</a>
+            </li>
+            <li class="nav-item dropdown ">
+                <a class="nav-link dropdown-toggle disabled" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Mantenimiento
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/Usuarios/Index">Usuarios</a>
+                    <a class="dropdown-item" href="/Perfiles/Index">Perfiles</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Bitacora</a>
+                </div>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <a class="btn text-primary mr-2" href="@Url.Action("Login", "Accounts")"><i class="fas fa-sign-in-alt"></i> Sign In</a>
+        </form>
+    </div>
+</nav>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-7 offset-2">
+            <div class="card card-header">
+                <h4 class="text-center">LOGIN</h4>
+            </div>
+            <div class="card card-body">
+                <hr />
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group col">
+                        @Html.LabelFor(model => model.USUARIO1, htmlAttributes: new { @class = "control-label col-md" })
+                        <div class="col-md">
+                            @Html.EditorFor(model => model.USUARIO1, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.USUARIO1, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group col">
+                        @Html.LabelFor(model => model.PASSWORD, htmlAttributes: new { @class = "control-label col-md" })
+                        <div class="col-md">
+                            @Html.EditorFor(model => model.PASSWORD, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.PASSWORD, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group col">
+                        <div class="col-md-offset-2 col-md">
+                            <input type="submit" value="Log In" class="btn btn-outline-primary btn-block" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+}
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ProcesosDAModelStoreContainer" CdmEntityContainer="ProcesosDAEntities">
+    <EntitySetMapping Name="PERFILES">
+      <EntityTypeMapping TypeName="ProcesosDAModel.PERFILE">
+        <MappingFragment StoreEntitySet="PERFILES">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PERFIL" ColumnName="PERFIL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USUARIOS">
+      <EntityTypeMapping TypeName="ProcesosDAModel.USUARIO">
+        <MappingFragment StoreEntitySet="USUARIOS">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="USUARIO1" ColumnName="USUARIO" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="PERFIL" ColumnName="PERFIL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="COSTOes">
+      <EntityTypeMapping TypeName="ProcesosDAModel.COSTO">
+        <MappingFragment StoreEntitySet="COSTO">
+          <ScalarProperty Name="COSTO1" ColumnName="COSTO" />
+          <ScalarProperty Name="SOLICITUD" ColumnName="SOLICITUD" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DD_Solicitudes">
+      <EntityTypeMapping TypeName="ProcesosDAModel.DD_Solicitudes">
+        <MappingFragment StoreEntitySet="DD_Solicitudes">
+          <ScalarProperty Name="Combustible" ColumnName="Combustible" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="F_SALIDA" ColumnName="F_SALIDA" />
+          <ScalarProperty Name="F_ENTRADA" ColumnName="F_ENTRADA" />
+          <ScalarProperty Name="MOTIVO" ColumnName="MOTIVO" />
+          <ScalarProperty Name="DEPENDENCIA" ColumnName="DEPENDENCIA" />
+          <ScalarProperty Name="CARGO" ColumnName="CARGO" />
+          <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DISTANCIAs">
+      <EntityTypeMapping TypeName="ProcesosDAModel.DISTANCIA">
+        <MappingFragment StoreEntitySet="DISTANCIA">
+          <ScalarProperty Name="KM" ColumnName="KM" />
+          <ScalarProperty Name="HASTA" ColumnName="HASTA" />
+          <ScalarProperty Name="DESDE" ColumnName="DESDE" />
+          <ScalarProperty Name="SOLICITUD" ColumnName="SOLICITUD" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DD_Beneficiarios">
+      <EntityTypeMapping TypeName="ProcesosDAModel.DD_Beneficiarios">
+        <MappingFragment StoreEntitySet="DD_Beneficiarios">
+          <ScalarProperty Name="TOTAL" ColumnName="TOTAL" />
+          <ScalarProperty Name="HOSPEDAJE" ColumnName="HOSPEDAJE" />
+          <ScalarProperty Name="CENA" ColumnName="CENA" />
+          <ScalarProperty Name="ALMUERZO" ColumnName="ALMUERZO" />
+          <ScalarProperty Name="DESAYUNO" ColumnName="DESAYUNO" />
+          <ScalarProperty Name="SOLICITUDESID" ColumnName="SOLICITUDESID" />
+          <ScalarProperty Name="ASIGNATURASID" ColumnName="ASIGNATURASID" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DD_Cantidades">
+      <EntityTypeMapping TypeName="ProcesosDAModel.DD_Cantidades">
+        <MappingFragment StoreEntitySet="DD_Cantidades">
+          <ScalarProperty Name="HOSPEDAJE" ColumnName="HOSPEDAJE" />
+          <ScalarProperty Name="CENA" ColumnName="CENA" />
+          <ScalarProperty Name="ALMUERZO" ColumnName="ALMUERZO" />
+          <ScalarProperty Name="DESAYUNO" ColumnName="DESAYUNO" />
+          <ScalarProperty Name="SOLICITUDESID" ColumnName="SOLICITUDESID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DD_Desembolso">
+      <EntityTypeMapping TypeName="ProcesosDAModel.DD_Desembolso">
+        <MappingFragment StoreEntitySet="DD_Desembolso">
+          <ScalarProperty Name="METODO_PAGO" ColumnName="METODO_PAGO" />
+          <ScalarProperty Name="AREA" ColumnName="AREA" />
+          <ScalarProperty Name="CONCEPTO" ColumnName="CONCEPTO" />
+          <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+          <ScalarProperty Name="MONTO" ColumnName="MONTO" />
+          <ScalarProperty Name="CODIGO_BENEFICIARIO" ColumnName="CODIGO_BENEFICIARIO" />
+          <ScalarProperty Name="BENEFICIARIOID" ColumnName="BENEFICIARIOID" />
+          <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DD_GrupoOcupacional">
+      <EntityTypeMapping TypeName="ProcesosDAModel.DD_GrupoOcupacional">
+        <MappingFragment StoreEntitySet="DD_GrupoOcupacional">
+          <ScalarProperty Name="HOSPEDAJE" ColumnName="HOSPEDAJE" />
+          <ScalarProperty Name="CENA" ColumnName="CENA" />
+          <ScalarProperty Name="ALMUERZO" ColumnName="ALMUERZO" />
+          <ScalarProperty Name="DESAYUNO" ColumnName="DESAYUNO" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DD_Bitacora">
+      <EntityTypeMapping TypeName="ProcesosDAModel.DD_Bitacora">
+        <MappingFragment StoreEntitySet="DD_Bitacora">
+          <ScalarProperty Name="DATE" ColumnName="DATE" />
+          <ScalarProperty Name="EVENTO" ColumnName="EVENTO" />
+          <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

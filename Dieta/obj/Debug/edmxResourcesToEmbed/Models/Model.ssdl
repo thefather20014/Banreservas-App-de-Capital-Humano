@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProcesosDAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="COSTO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SOLICITUD" Type="int" Nullable="false" />
+    <Property Name="COSTO" Type="decimal" Precision="13" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DD_Beneficiarios">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CODIGO" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ASIGNATURASID" Type="int" Nullable="false" />
+    <Property Name="SOLICITUDESID" Type="int" Nullable="false" />
+    <Property Name="DESAYUNO" Type="int" />
+    <Property Name="ALMUERZO" Type="int" />
+    <Property Name="CENA" Type="int" />
+    <Property Name="HOSPEDAJE" Type="int" />
+    <Property Name="TOTAL" Type="decimal" Precision="13" Scale="2" />
+  </EntityType>
+  <EntityType Name="DD_Bitacora">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="USERNAME" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="EVENTO" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="DATE" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DD_Cantidades">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SOLICITUDESID" Type="int" Nullable="false" />
+    <Property Name="DESAYUNO" Type="int" />
+    <Property Name="ALMUERZO" Type="int" />
+    <Property Name="CENA" Type="int" />
+    <Property Name="HOSPEDAJE" Type="int" />
+  </EntityType>
+  <EntityType Name="DD_Desembolso">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CODIGO" Type="varchar" MaxLength="10" />
+    <Property Name="BENEFICIARIOID" Type="int" Nullable="false" />
+    <Property Name="CODIGO_BENEFICIARIO" Type="varchar" MaxLength="10" />
+    <Property Name="MONTO" Type="int" />
+    <Property Name="FECHA" Type="date" Nullable="false" />
+    <Property Name="CONCEPTO" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="AREA" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="METODO_PAGO" Type="char" MaxLength="14" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DD_GrupoOcupacional">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DESAYUNO" Type="int" Nullable="false" />
+    <Property Name="ALMUERZO" Type="int" Nullable="false" />
+    <Property Name="CENA" Type="int" Nullable="false" />
+    <Property Name="HOSPEDAJE" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DD_Solicitudes">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="FECHA" Type="date" Nullable="false" />
+    <Property Name="CARGO" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="DEPENDENCIA" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="MOTIVO" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="F_ENTRADA" Type="datetime" Nullable="false" />
+    <Property Name="F_SALIDA" Type="datetime" Nullable="false" />
+    <Property Name="TIPO" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="Combustible" Type="decimal" Precision="13" Scale="2" />
+  </EntityType>
+  <EntityType Name="DISTANCIA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SOLICITUD" Type="int" Nullable="false" />
+    <Property Name="DESDE" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="HASTA" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="KM" Type="decimal" Precision="13" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PERFILES">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PERFIL" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="USUARIOS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="USUARIO" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="PASSWORD" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="PERFIL" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_ASIGNATURAS">
+    <End Role="DD_GrupoOcupacional" Type="Self.DD_GrupoOcupacional" Multiplicity="1" />
+    <End Role="DD_Beneficiarios" Type="Self.DD_Beneficiarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DD_GrupoOcupacional">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DD_Beneficiarios">
+        <PropertyRef Name="ASIGNATURASID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_COSTO">
+    <End Role="DD_Solicitudes" Type="Self.DD_Solicitudes" Multiplicity="1" />
+    <End Role="COSTO" Type="Self.COSTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DD_Solicitudes">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="COSTO">
+        <PropertyRef Name="SOLICITUD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DISTANCIA">
+    <End Role="DD_Solicitudes" Type="Self.DD_Solicitudes" Multiplicity="1" />
+    <End Role="DISTANCIA" Type="Self.DISTANCIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DD_Solicitudes">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DISTANCIA">
+        <PropertyRef Name="SOLICITUD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_REEMBOLSO">
+    <End Role="DD_Beneficiarios" Type="Self.DD_Beneficiarios" Multiplicity="1" />
+    <End Role="DD_Desembolso" Type="Self.DD_Desembolso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DD_Beneficiarios">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DD_Desembolso">
+        <PropertyRef Name="BENEFICIARIOID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SOLICITUDES">
+    <End Role="DD_Solicitudes" Type="Self.DD_Solicitudes" Multiplicity="1" />
+    <End Role="DD_Cantidades" Type="Self.DD_Cantidades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DD_Solicitudes">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DD_Cantidades">
+        <PropertyRef Name="SOLICITUDESID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SOLICITUDES2">
+    <End Role="DD_Solicitudes" Type="Self.DD_Solicitudes" Multiplicity="1" />
+    <End Role="DD_Beneficiarios" Type="Self.DD_Beneficiarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DD_Solicitudes">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DD_Beneficiarios">
+        <PropertyRef Name="SOLICITUDESID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USUARIOS">
+    <End Role="PERFILES" Type="Self.PERFILES" Multiplicity="1" />
+    <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERFILES">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="USUARIOS">
+        <PropertyRef Name="PERFIL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ProcesosDAModelStoreContainer">
+    <EntitySet Name="COSTO" EntityType="Self.COSTO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DD_Beneficiarios" EntityType="Self.DD_Beneficiarios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DD_Bitacora" EntityType="Self.DD_Bitacora" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DD_Cantidades" EntityType="Self.DD_Cantidades" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DD_Desembolso" EntityType="Self.DD_Desembolso" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DD_GrupoOcupacional" EntityType="Self.DD_GrupoOcupacional" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DD_Solicitudes" EntityType="Self.DD_Solicitudes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DISTANCIA" EntityType="Self.DISTANCIA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PERFILES" EntityType="Self.PERFILES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_ASIGNATURAS" Association="Self.FK_ASIGNATURAS">
+      <End Role="DD_GrupoOcupacional" EntitySet="DD_GrupoOcupacional" />
+      <End Role="DD_Beneficiarios" EntitySet="DD_Beneficiarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_COSTO" Association="Self.FK_COSTO">
+      <End Role="DD_Solicitudes" EntitySet="DD_Solicitudes" />
+      <End Role="COSTO" EntitySet="COSTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DISTANCIA" Association="Self.FK_DISTANCIA">
+      <End Role="DD_Solicitudes" EntitySet="DD_Solicitudes" />
+      <End Role="DISTANCIA" EntitySet="DISTANCIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_REEMBOLSO" Association="Self.FK_REEMBOLSO">
+      <End Role="DD_Beneficiarios" EntitySet="DD_Beneficiarios" />
+      <End Role="DD_Desembolso" EntitySet="DD_Desembolso" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SOLICITUDES" Association="Self.FK_SOLICITUDES">
+      <End Role="DD_Solicitudes" EntitySet="DD_Solicitudes" />
+      <End Role="DD_Cantidades" EntitySet="DD_Cantidades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SOLICITUDES2" Association="Self.FK_SOLICITUDES2">
+      <End Role="DD_Solicitudes" EntitySet="DD_Solicitudes" />
+      <End Role="DD_Beneficiarios" EntitySet="DD_Beneficiarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USUARIOS" Association="Self.FK_USUARIOS">
+      <End Role="PERFILES" EntitySet="PERFILES" />
+      <End Role="USUARIOS" EntitySet="USUARIOS" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

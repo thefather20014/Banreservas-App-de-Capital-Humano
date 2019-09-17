@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="94c923e43af146bfbf20e51f939115da" Name="Diagram1">
+        <EntityTypeShape EntityType="ProcesosDAModel.PERFILE" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProcesosDAModel.USUARIO" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="ProcesosDAModel.FK_USUARIOS" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ProcesosDAModel.COSTO" Width="1.5" PointX="7.375" PointY="3.5" />
+        <EntityTypeShape EntityType="ProcesosDAModel.DD_Solicitudes" Width="1.5" PointX="5.125" PointY="1.25" />
+        <EntityTypeShape EntityType="ProcesosDAModel.DISTANCIA" Width="1.5" PointX="7.375" PointY="0.5" />
+        <AssociationConnector Association="ProcesosDAModel.FK_COSTO" />
+        <AssociationConnector Association="ProcesosDAModel.FK_DISTANCIA" />
+        <EntityTypeShape EntityType="ProcesosDAModel.DD_Beneficiarios" Width="1.5" PointX="10.875" PointY="0.5" />
+        <EntityTypeShape EntityType="ProcesosDAModel.DD_Cantidades" Width="1.5" PointX="2.375" PointY="3.75" />
+        <EntityTypeShape EntityType="ProcesosDAModel.DD_Desembolso" Width="1.5" PointX="13.125" PointY="0.75" />
+        <EntityTypeShape EntityType="ProcesosDAModel.DD_GrupoOcupacional" Width="1.5" PointX="9.125" PointY="3.5" />
+        <AssociationConnector Association="ProcesosDAModel.FK_ASIGNATURAS" />
+        <AssociationConnector Association="ProcesosDAModel.FK_REEMBOLSO" />
+        <AssociationConnector Association="ProcesosDAModel.FK_SOLICITUDES2" />
+        <AssociationConnector Association="ProcesosDAModel.FK_SOLICITUDES" />
+        <EntityTypeShape EntityType="ProcesosDAModel.DD_Bitacora" Width="1.5" PointX="5" PointY="5.375" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
